@@ -43,16 +43,14 @@ public class NetUtils {
     public static boolean isWifi(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm == null)
-            return false;
-        return cm.getActiveNetworkInfo().getType() == ConnectivityManager.TYPE_WIFI;
+        return cm != null && cm.getActiveNetworkInfo().getType() == ConnectivityManager.TYPE_WIFI;
 
     }
 
     /**
      * 打开网络设置界面
      */
-    public static void openSetting(Activity activity) {
+    public static void openNetSetting(Activity activity) {
         Intent intent = new Intent("/");
         ComponentName cm = new ComponentName("com.android.settings",
                 "com.android.settings.WirelessSettings");
