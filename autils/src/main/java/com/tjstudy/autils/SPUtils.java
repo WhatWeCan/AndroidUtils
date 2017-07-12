@@ -8,44 +8,18 @@ import android.content.SharedPreferences;
  */
 
 public class SPUtils {
-    private static SPUtils spUtils;
-    private String fileName = "share_data";
-    private SharedPreferences mSp;
-    private Context mContext;
-
-    private SPUtils(Context context) {
-        mContext = context;
-        mSp = mContext.getSharedPreferences(fileName, Context.MODE_PRIVATE);
+    private SPUtils() {
+        /* cannot be instantiated */
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    public static SPUtils newInstance(Context context) {
-        if (spUtils == null) {
-            synchronized (SPUtils.class) {
-                if (spUtils == null) {
-                    spUtils = new SPUtils(context);
-                }
-            }
-        }
-        return spUtils;
-    }
-
-    /**
-     * 设置sp存储的文件名
-     *
-     * @param fileName
-     * @return
-     */
-    public SPUtils setSPFileName(String fileName) {
-        mSp = mContext.getSharedPreferences(fileName, Context.MODE_PRIVATE);
-        return this;
-    }
+    private static final String fileName = "share_data";
 
     /**
      * 存放数据到sp
-     *
-     * @return
      */
-    public void put(String key, Object object) {
+    public static void put(Context context, String key, Object object) {
+        SharedPreferences mSp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSp.edit();
         if (object instanceof String) {
             editor.putString(key, (String) object).apply();
@@ -64,72 +38,57 @@ public class SPUtils {
 
     /**
      * 获取指定键的值
-     *
-     * @param key
-     * @param defaultObj
-     * @return
      */
-    public String getString(String key, String defaultObj) {
+    public static String getString(Context context, String key, String defaultObj) {
+        SharedPreferences mSp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         return mSp.getString(key, defaultObj);
     }
 
     /**
      * 获取指定键的值
-     *
-     * @param key
-     * @param defaultObj
-     * @return
      */
-    public Integer getInt(String key, Integer defaultObj) {
+    public static Integer getInt(Context context, String key, Integer defaultObj) {
+        SharedPreferences mSp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         return mSp.getInt(key, defaultObj);
     }
 
     /**
      * 获取指定键的值
-     *
-     * @param key
-     * @param defaultObj
-     * @return
      */
-    public Boolean getBoolean(String key, Boolean defaultObj) {
+    public static Boolean getBoolean(Context context, String key, Boolean defaultObj) {
+        SharedPreferences mSp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         return mSp.getBoolean(key, defaultObj);
     }
 
     /**
      * 获取指定键的值
-     *
-     * @param key
-     * @param defaultObj
-     * @return
      */
-    public Float getFloat(String key, Float defaultObj) {
+    public static Float getFloat(Context context, String key, Float defaultObj) {
+        SharedPreferences mSp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         return mSp.getFloat(key, defaultObj);
     }
 
     /**
      * 获取指定键的值
-     *
-     * @param key
-     * @param defaultObj
-     * @return
      */
-    public Long getLong(String key, Long defaultObj) {
+    public static Long getLong(Context context, String key, Long defaultObj) {
+        SharedPreferences mSp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         return mSp.getLong(key, defaultObj);
     }
 
     /**
      * 移除指定键值
-     *
-     * @param key
      */
-    public void remove(String key) {
+    public static void remove(Context context, String key) {
+        SharedPreferences mSp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         mSp.edit().remove(key).apply();
     }
 
     /**
      * 清楚所有键值
      */
-    public void clearAll() {
+    public static void clearAll(Context context) {
+        SharedPreferences mSp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         mSp.edit().clear().apply();
     }
 }

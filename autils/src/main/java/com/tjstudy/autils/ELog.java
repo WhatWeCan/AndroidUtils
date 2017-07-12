@@ -17,6 +17,10 @@ import java.util.Date;
  */
 
 public class ELog {
+    private ELog() {
+        /* cannot be instantiated */
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
     /**
      * 是否是debug模式----总开关
      */

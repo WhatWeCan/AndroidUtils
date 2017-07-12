@@ -9,6 +9,10 @@ import android.widget.EditText;
  */
 
 public class KeyBoardUtils {
+    private KeyBoardUtils() {
+        /* cannot be instantiated */
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
     /**
      * 打开软键盘
      *

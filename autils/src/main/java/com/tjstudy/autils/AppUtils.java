@@ -12,7 +12,6 @@ public class AppUtils {
     private AppUtils() {
         /* cannot be instantiated */
         throw new UnsupportedOperationException("cannot be instantiated");
-
     }
 
     /**
@@ -34,7 +33,6 @@ public class AppUtils {
     /**
      * [获取应用程序版本名称信息]
      *
-     * @param context
      * @return 当前应用的版本名称
      */
     public static String getVersionName(Context context) {
@@ -43,7 +41,6 @@ public class AppUtils {
             PackageInfo packageInfo = packageManager.getPackageInfo(
                     context.getPackageName(), 0);
             return packageInfo.versionName;
-
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

@@ -13,6 +13,10 @@ import java.nio.charset.Charset;
 public class TransformUtils {
 
     //---------------------int 和 byte[]的相互转换------------------
+    private TransformUtils() {
+        /* cannot be instantiated */
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
 
     /**
      * int to byte[4]
